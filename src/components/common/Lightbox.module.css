@@ -1,0 +1,93 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(56px + var(--safe-top)) 16px calc(56px + var(--safe-bottom));
+  background: rgba(43, 20, 31, 0.92);
+  backdrop-filter: blur(6px);
+  animation: fade 0.25s var(--ease);
+}
+
+.figure {
+  margin: 0;
+  width: min(100%, 1040px);
+  display: grid;
+  justify-items: center;
+}
+
+/* Ảnh thật giữ đúng tỉ lệ gốc (ngang hay dọc), không bị viền hồng */
+.image {
+  width: auto;
+  max-width: 100%;
+  max-height: 74vh;
+  border-radius: var(--radius);
+  object-fit: contain;
+  background: none;
+}
+
+div.image {
+  width: min(100%, 520px);
+}
+
+.caption {
+  margin-top: 12px;
+  text-align: center;
+  color: #f4dfe3;
+  font-size: var(--fs-xs);
+}
+
+.close,
+.nav {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.close {
+  top: calc(12px + var(--safe-top));
+  right: 12px;
+}
+
+.nav {
+  bottom: calc(12px + var(--safe-bottom));
+}
+
+.prev {
+  left: calc(50% - 56px);
+}
+
+.next {
+  left: calc(50% + 12px);
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+  .prev {
+    left: 32px;
+  }
+  .next {
+    left: auto;
+    right: 32px;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}

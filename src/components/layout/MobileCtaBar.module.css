@@ -1,0 +1,46 @@
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  gap: 10px;
+  padding: 12px var(--gutter) calc(12px + var(--safe-bottom));
+  background: linear-gradient(to top, rgba(251, 243, 242, 0.98) 60%, rgba(251, 243, 242, 0));
+  transform: translateY(110%);
+  transition: transform 0.4s var(--ease);
+}
+
+.visible {
+  transform: none;
+}
+
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 1px solid var(--c-gold);
+  color: var(--c-rose-deep);
+  box-shadow: var(--shadow-sm);
+}
+
+.zalo {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.main {
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+  .bar {
+    display: none;
+  }
+}

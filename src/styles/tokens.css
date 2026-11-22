@@ -1,0 +1,59 @@
+:root {
+  /* Màu – "hồng sang" */
+  --c-bg: #fbf3f2;
+  --c-bg-alt: #f6e3e3;
+  --c-surface: #ffffff;
+  --c-rose: #b4536b;
+  --c-rose-deep: #7a2e45;
+  --c-rose-soft: #f2d4d9;
+  --c-plum: #3b1f2b;
+  --c-text: #5a4450;
+  --c-muted: #8f7883;
+  --c-gold: #c9a27e;
+  --c-gold-soft: #e9d6c3;
+  --c-line: #ebd5d7;
+
+  --grad-rose: linear-gradient(135deg, #c96a80 0%, #b4536b 45%, #8e3a54 100%);
+  --grad-blush: linear-gradient(160deg, #fdf6f5 0%, #f7e1e3 55%, #f1d2d6 100%);
+  --grad-gold: linear-gradient(90deg, transparent, var(--c-gold), transparent);
+
+  /* Chữ */
+  --f-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --f-sans: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.875rem;
+  --fs-2xl: 2.5rem;
+
+  /* Khoảng cách & bo góc */
+  --gutter: 20px;
+  --section-y: 72px;
+  --radius-sm: 12px;
+  --radius: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 10px rgba(122, 46, 69, 0.06);
+  --shadow: 0 10px 30px rgba(122, 46, 69, 0.1);
+  --shadow-lg: 0 20px 50px rgba(122, 46, 69, 0.16);
+
+  --header-h: 64px;
+  --container: 1120px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --fs-xl: 2.5rem;
+    --fs-2xl: 3.75rem;
+    --gutter: 32px;
+    --section-y: 112px;
+    --header-h: 76px;
+  }
+}

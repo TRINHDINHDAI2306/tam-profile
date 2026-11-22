@@ -1,0 +1,115 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 20px 16px;
+}
+
+.num {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--c-gold);
+}
+
+.body h3 {
+  font-size: var(--fs-lg);
+}
+
+.highlight {
+  display: grid;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--c-bg-alt);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--c-plum);
+}
+
+.highlight span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-rose-deep);
+}
+
+.desc {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: var(--fs-sm);
+  color: var(--c-text);
+}
+
+.book {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--c-line);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--c-rose-deep);
+}
+
+.book span {
+  transition: transform 0.25s var(--ease);
+}
+
+.book:hover span {
+  transform: translateX(4px);
+}
+
+.hint {
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--c-muted);
+}
+
+@media (min-width: 1024px) {
+  /* 7 thẻ: 4 + 3, hàng cuối căn giữa */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .row > * {
+    flex: 0 0 calc((100% - 60px) / 4);
+  }
+
+  /* height: 100% chặn flex stretch → để auto cho các thẻ cùng hàng cao bằng nhau */
+  .row > .card {
+    height: auto;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+  }
+
+  .hint {
+    display: none;
+  }
+}

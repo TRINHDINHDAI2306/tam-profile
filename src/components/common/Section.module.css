@@ -1,0 +1,60 @@
+.section {
+  padding-block: var(--section-y);
+  position: relative;
+}
+
+.alt {
+  background: var(--c-bg-alt);
+}
+
+.head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.eyebrow {
+  display: block;
+  text-wrap: balance;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-rose-deep);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: var(--fs-xl);
+}
+
+.title em {
+  font-style: italic;
+  color: var(--c-rose);
+}
+
+.subtitle {
+  margin-top: 12px;
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+.divider {
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: var(--grad-gold);
+  position: relative;
+}
+
+.divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  background: var(--c-gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
