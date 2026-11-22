@@ -35,6 +35,8 @@
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--c-plum);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* Liên hệ nhanh */
