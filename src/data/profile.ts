@@ -48,10 +48,10 @@ const img = {
     alt: 'MC Anh Tâm dẫn chương trình Chào đón tân sinh viên Khoa Lịch sử, Trường Đại học Sư phạm Hà Nội',
     position: 'center 40%',
   },
-  freshmenK75: {
-    src: '/images/events/chao-tan-sinh-vien-k75-khoa-lich-su.webp',
-    alt: 'MC Anh Tâm dẫn chương trình Chào tân sinh viên Khóa 75, Khoa Lịch sử, Trường Đại học Sư phạm Hà Nội',
-    position: 'center 45%',
+  graduation: {
+    src: '/images/events/le-tot-nghiep-hv-mc-van-minh.webp',
+    alt: 'MC Anh Tâm trong chiếc váy trắng ngà dẫn Lễ tốt nghiệp Wedding K81 – Event K76 của Học viện MC Văn Minh',
+    position: '47% center',
   },
   opening: {
     src: '/images/events/le-khai-truong-anh-thao-group.webp',
@@ -109,7 +109,7 @@ const content: Profile = {
   brand: {
     monogram: 'AT',
     name: 'MC Anh Tâm',
-    tagline: 'Dẫn bằng tư duy – Chạm bằng cảm xúc.',
+    tagline: 'Sự đồng hành trọn vẹn.',
   },
 
   nav: [
@@ -126,7 +126,7 @@ const content: Profile = {
     firstName: 'MC Anh',
     highlightName: 'Tâm',
     roles: ['Người dẫn chương trình', 'Biên tập viên', 'Nhà giáo dục'],
-    tagline: 'Dẫn bằng tư duy – Chạm bằng cảm xúc.',
+    tagline: 'Sự đồng hành trọn vẹn.',
     portrait: img.hero,
     primaryCta: { label: 'Đặt lịch ngay', href: '#contact' },
     secondaryCta: { label: 'Xem hình ảnh', href: '#events' },
@@ -303,9 +303,9 @@ const content: Profile = {
       image: img.launch,
     },
     {
-      caption: 'Chào tân sinh viên Khóa 75 – Khoa Lịch sử, ĐH Sư phạm Hà Nội',
+      caption: 'Lễ tốt nghiệp Wedding K81 – Event K76, Học viện MC Văn Minh',
       category: 'Giáo dục',
-      image: img.freshmenK75,
+      image: img.graduation,
     },
     { caption: 'Gala Dinner – Học viện MC Văn Minh', category: 'Gala Dinner', image: img.gala },
     {
