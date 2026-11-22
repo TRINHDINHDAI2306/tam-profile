@@ -17,7 +17,11 @@ const NAMES = [
   'MC Anh Tâm', 'Anh Tâm', 'Voi Land', 'Rung Chuông Vàng', 'Chiến thắng Tốt Động', 'Tốt Động',
   'Học viện', 'MC Văn Minh', 'Văn Minh', 'Phụng Hiếu', 'Công ty', 'Đại đoàn kết', 'toàn dân tộc',
   'Gala Dinner', 'GEN Party', 'Ban tổ chức', 'tiếng Việt', 'Kỷ niệm 600 năm', '600 năm', 'Wedding K81',
-  'Event K76', 'Lễ tổng kết',
+  'Event K76', 'Lễ tổng kết', 'Chúc Động', 'Quảng Bị', 'Đại học Sư phạm Hà Nội', 'Sư phạm Hà Nội', 'Khoa Lịch sử',
+  'tân sinh viên', 'Khóa 75', 'Trung tâm Văn hóa', 'Thể thao', 'Học tập cộng đồng', 'Phú La', 'Trăng rằm', 'cây cảnh',
+  'Lễ ra mắt', 'Nhà giáo Việt Nam', 'Anh Thảo Group', 'Lễ khai trương',
+  'Phụ nữ Việt Nam', 'Đại sứ Văn hóa đọc', 'Văn hóa đọc', 'Lễ phát động', 'Lễ thành hôn', 'Kết nối thịnh vượng',
+  'Vững bước tương lai', 'Đêm hội', 'nhà xưởng', 'ghi hình',
 ];
 
 /** Từ ghép thông dụng – giữ liền ở tiêu đề và đoạn văn cột rộng. */
@@ -57,7 +61,7 @@ const WORDS = [
   'ăn ý', 'bộ phận', 'truyền tải', 'lắng nghe', 'phản ứng', 'kịp thời', 'tác phong', 'chuyên nghiệp',
   'trách nhiệm', 'có mặt', 'nghiên cứu', 'kỹ lưỡng', 'thông tin', 'hàng đầu', 'điểm tựa', 'tin cậy',
   'liên hệ', 'sớm nhất', 'trên đài', 'phô trương', 'yêu thương', 'an lành', 'miền ký ức',
-  'giới thiệu', 'lời ngỏ', 'triết lý', 'làm nghề', 'ngôn từ', 'hình ảnh', 'đặt lịch', 'liên hệ nhanh',
+  'ống kính', 'giới thiệu', 'lời ngỏ', 'triết lý', 'làm nghề', 'ngôn từ', 'hình ảnh', 'đặt lịch', 'liên hệ nhanh',
 ];
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -91,7 +95,7 @@ export const vn = (text: string) => glue(text, FULL);
 export const vnLight = (text: string) => glue(text, LIGHT);
 
 /** Các khoá không phải văn bản hiển thị (đường dẫn, mã, số liên hệ) – giữ nguyên. */
-const SKIP_KEYS = new Set(['src', 'url', 'href', 'id', 'position', 'phone', 'zalo', 'email', 'bookingType', 'monogram']);
+const SKIP_KEYS = new Set(['src', 'url', 'href', 'id', 'position', 'phone', 'zalo', 'email', 'bookingType', 'monogram', 'youtube', 'poster', 'orientation', 'duration']);
 
 /** Đoạn mô tả nằm trong thẻ hẹp (trụ cột, không gian sự kiện, phong cách, giá trị). */
 const LIGHT_KEYS = new Set(['description']);

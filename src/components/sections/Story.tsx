@@ -17,7 +17,6 @@ export function Story() {
         </Reveal>
 
         <Reveal className={styles.text} delay={120}>
-          <blockquote className={styles.question}>{story.question}</blockquote>
           {story.paragraphs.map((p, i) => (
             <p key={i} className={i === story.paragraphs.length - 1 ? styles.closing : undefined}>
               {p}

@@ -50,22 +50,21 @@ Nguyên tắc: **không dùng hồng neon/hồng cánh sen chói**. Sang trọng
 
 ## 3. Cấu trúc trang (thứ tự section)
 
-Nội dung bám theo 9 trang của `docs/source/PHẦN II.docx` (hồ sơ năng lực **MC Anh Tâm**).
+Nội dung bám theo `docs/source/at.docx` – bản cập nhật thay cho `docs/source/PHẦN II.docx` (hồ sơ năng lực **MC Anh Tâm**).
 
 | # | Section | Anchor | Nội dung (trang docx) | Ảnh |
 |---|---|---|---|---|
-| 0 | Header | – | Monogram AT, menu 6 mục, nút Đặt lịch | – |
-| 1 | Hero | `#hero` | Trang 1 – Bìa: tên, 3 vai trò, slogan, câu trích | Vest đen (hội nghị) |
+| 0 | Header | – | Logo AT (`brand/`), menu, nút Đặt lịch | – |
+| 1 | Hero | `#hero` | Trang 1 – Bìa: tên, 3 vai trò, slogan | Vest đen (hội nghị) |
 | 2 | Dấu ấn tiêu biểu | – | Dải chữ chạy: Tốt Động, Rung Chuông Vàng, Voi Land… | – |
-| 3 | Lời ngỏ | `#story` | Trang 2 – câu hỏi + 3 đoạn câu chuyện nghề | Chân dung hậu trường |
+| 3 | Lời ngỏ | `#story` | Trang 2 – tiêu đề + 3 đoạn câu chuyện nghề | Chân dung hậu trường |
 | 4 | Giới thiệu | `#about` | Trang 3 – đoạn giới thiệu, vai trò, 3 trụ cột | Dẫn lễ tốt nghiệp |
 | 5 | Kinh nghiệm | `#experience` | Trang 4–5 – 7 không gian sự kiện, nút đặt lịch theo từng mảng | 4 ảnh thật + 3 ô chờ ảnh |
 | 6 | Phong cách | `#style` | Trang 6 – 5 sắc thái dẫn | – |
-| 7 | Giá trị | `#values` | Trang 7 – 6 điểm tựa | – |
-| 8 | Triết lý & thơ | `#philosophy` | Trang 8–9 – khối trích dẫn hồng + bài thơ 2 khổ | – |
-| 9 | Hình ảnh sự kiện | `#events` | 7 ảnh thật, lọc theo loại, phóng to (lightbox) | 7 ảnh |
-| 10 | Đặt lịch | `#contact` | Gọi · Zalo, form 2 bước, cam kết, SĐT/email/Facebook | – |
-| 11 | Footer | – | Tên, slogan, Facebook | – |
+| 7 | Triết lý làm nghề | `#philosophy` | Khối trích dẫn hồng (bản mới đã bỏ mục 6 điểm tựa và bài thơ) | – |
+| 8 | Hình ảnh sự kiện | `#events` | 7 ảnh thật, lọc theo loại, phóng to (lightbox) | 7 ảnh |
+| 9 | Đặt lịch | `#contact` | Trang 8 – Lời hẹn với đối tác; Gọi · Zalo, form 2 bước, SĐT/email/Facebook | – |
+| 10 | Footer | – | Tên, slogan, Facebook | – |
 | ★ | Thanh CTA đáy (mobile) | – | Gọi · Zalo · Đặt lịch ngay, tự ẩn khi ở form | – |
 
 ## 4. Yêu cầu mobile-first

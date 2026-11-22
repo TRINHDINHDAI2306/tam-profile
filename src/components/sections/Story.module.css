@@ -34,19 +34,6 @@
   text-indent: 1.5em;
 }
 
-.question {
-  margin: 0 0 4px;
-  padding: 18px 20px;
-  border-left: 2px solid var(--c-gold);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  background: var(--c-bg-alt);
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: 1.15rem;
-  line-height: 1.55;
-  color: var(--c-plum);
-}
-
 .closing {
   font-family: var(--f-serif);
   font-size: 1.1rem;
@@ -66,7 +53,4 @@
     max-width: 400px;
   }
 
-  .question {
-    font-size: 1.3rem;
-  }
 }

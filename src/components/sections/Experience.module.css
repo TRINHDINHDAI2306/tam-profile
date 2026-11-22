@@ -49,13 +49,6 @@
   color: var(--c-rose-deep);
 }
 
-.desc {
-  text-align: justify;
-  text-justify: inter-word;
-  font-size: var(--fs-sm);
-  color: var(--c-text);
-}
-
 .book {
   display: inline-flex;
   align-items: center;

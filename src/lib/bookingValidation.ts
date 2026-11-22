@@ -2,7 +2,7 @@ import type { BookingData, BookingErrors } from '@/types/booking';
 
 export const STEP_FIELDS: (keyof BookingData)[][] = [
   ['eventType', 'date', 'time', 'location', 'guests'],
-  ['name', 'phone', 'email', 'channel', 'message'],
+  ['name', 'phone', 'message'],
 ];
 
 /** Chuẩn hoá SĐT: bỏ khoảng trắng, dấu chấm, gạch; +84 → 0. */
@@ -14,7 +14,6 @@ export function normalizePhone(raw: string): string {
 }
 
 const VN_MOBILE = /^0(3|5|7|8|9)\d{8}$/;
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function todayISO(): string {
   const d = new Date();
@@ -36,9 +35,6 @@ export function validateField(field: keyof BookingData, data: BookingData): stri
     case 'phone':
       if (!v) return 'Vui lòng nhập số điện thoại.';
       return VN_MOBILE.test(normalizePhone(v)) ? undefined : 'Số điện thoại chưa đúng (ví dụ: 0901 234 567).';
-    case 'email':
-      if (!v) return data.channel === 'email' ? 'Bạn chọn liên hệ qua email – vui lòng nhập email.' : undefined;
-      return EMAIL.test(v) ? undefined : 'Email chưa đúng định dạng.';
     case 'message':
       return v.length <= 1000 ? undefined : 'Lời nhắn tối đa 1.000 ký tự.';
     default:

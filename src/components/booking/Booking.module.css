@@ -231,33 +231,6 @@
   color: #b3263a;
 }
 
-/* Honeypot chống spam */
-.hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-/* ===== Thông báo lỗi gửi ===== */
-.alert {
-  display: grid;
-  gap: 6px;
-  margin-top: 20px;
-  padding: 14px 16px;
-  border-radius: var(--radius-sm);
-  background: #fdeef0;
-  border: 1px solid #f3c5cc;
-  font-size: var(--fs-sm);
-  color: #8f2336;
-}
-
-.alert a {
-  font-weight: 600;
-  color: var(--c-rose-deep);
-}
-
 /* ===== Nút điều hướng ===== */
 .actions {
   display: flex;
@@ -269,29 +242,9 @@
   flex: 1;
 }
 
-.next:disabled {
-  opacity: 0.75;
-  cursor: progress;
-}
-
 .back {
   flex: none;
   padding: 0 20px;
-}
-
-.spinner {
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .privacy {
@@ -311,26 +264,123 @@
   animation: stepIn 0.5s var(--ease);
 }
 
-.check {
-  position: relative;
+.zaloBadge {
+  display: grid;
+  place-items: center;
   width: 64px;
   height: 64px;
   margin-bottom: 6px;
   border-radius: 50%;
   background: var(--grad-rose);
+  color: #fff;
   box-shadow: 0 10px 24px rgba(180, 83, 107, 0.35);
 }
 
-.check::after {
-  content: '';
-  position: absolute;
-  left: 24px;
-  top: 18px;
-  width: 14px;
-  height: 24px;
-  border-right: 3px solid #fff;
-  border-bottom: 3px solid #fff;
-  transform: rotate(45deg);
+/* Trạng thái sao chép */
+.copyState {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--c-rose-soft);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--c-rose-deep);
+}
+
+.copyFail {
+  background: var(--c-bg-alt);
+}
+
+/* 3 bước dán & gửi */
+.zaloSteps {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  text-align: left;
+  font-size: var(--fs-sm);
+}
+
+.zaloSteps li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: start;
+  gap: 10px;
+  counter-increment: step;
+}
+
+.zaloSteps li > span {
+  padding-top: 2px;
+}
+
+.zaloSteps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--c-gold);
+  font-family: var(--f-serif);
+  font-style: italic;
+  color: var(--c-rose-deep);
+}
+
+.zaloSteps strong {
+  color: var(--c-plum);
+}
+
+.messageLabel {
+  justify-self: start;
+  margin-top: 10px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-rose-deep);
+}
+
+/* Bấm một lần là chọn hết – dễ tự sao chép nếu cần */
+.messageBox {
+  width: 100%;
+  max-height: 240px;
+  margin: 0;
+  padding: 14px 16px;
+  overflow: auto;
+  border-radius: var(--radius);
+  background: var(--c-bg);
+  border: 1px dashed var(--c-line);
+  font-family: var(--f-sans);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--c-plum);
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: all;
+  -webkit-user-select: all;
+}
+
+.textLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+}
+
+.textLinks button {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  color: var(--c-rose-deep);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .successEyebrow {
@@ -349,11 +399,6 @@
   color: var(--c-rose);
 }
 
-.successName {
-  font-weight: 600;
-  color: var(--c-plum);
-}
-
 .requiredNote {
   margin: -12px 0 20px;
   font-size: var(--fs-xs);
@@ -362,38 +407,6 @@
 
 .requiredNote span {
   color: var(--c-rose);
-}
-
-.summary {
-  width: 100%;
-  margin: 14px 0 6px;
-  padding: 4px 16px;
-  border-radius: var(--radius);
-  background-color: var(--c-bg);
-  text-align: left;
-}
-
-.summary div {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 12px 0;
-  font-size: var(--fs-sm);
-}
-
-.summary div + div {
-  border-top: 1px solid var(--c-line);
-}
-
-.summary dt {
-  color: var(--c-muted);
-}
-
-.summary dd {
-  margin: 0;
-  font-weight: 500;
-  color: var(--c-plum);
-  text-align: right;
 }
 
 .successActions {

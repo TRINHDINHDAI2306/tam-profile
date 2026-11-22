@@ -27,7 +27,6 @@ export function Experience() {
                   {a.highlight}
                 </p>
               )}
-              <p className={styles.desc}>{a.description}</p>
               <a href="#contact" className={styles.book} onClick={() => prefill(a.bookingType)}>
                 {vn('Đặt lịch chương trình này')} <span aria-hidden="true">→</span>
               </a>

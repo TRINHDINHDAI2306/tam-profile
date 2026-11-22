@@ -1,4 +1,5 @@
 import { profile } from '@/data/profile';
+import Logo from '@/components/common/Logo';
 import styles from './Footer.module.css';
 
 export function Footer() {
@@ -9,7 +10,9 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <span className={styles.mono}>{brand.monogram}</span>
+          <span className={styles.mono}>
+            <Logo tone="dark" />
+          </span>
           <p className={styles.name}>{brand.name}</p>
           <p className={styles.tagline}>{brand.tagline}</p>
         </div>

@@ -6,7 +6,6 @@ import { typeset } from '@/lib/typography';
  * Ảnh: điền `src` (ví dụ '/images/...webp'); để '' sẽ hiện placeholder.
  */
 
-const ph = (alt: string, label = alt): ImageAsset => ({ src: '', alt, label });
 
 const img = {
   hero: {
@@ -20,9 +19,9 @@ const img = {
     position: 'center 28%',
   },
   about: {
-    src: '/images/about/dan-le-tot-nghiep.webp',
-    alt: 'MC Anh Tâm dẫn Lễ tốt nghiệp Wedding K81 – Event K76 tại Học viện MC Văn Minh',
-    position: '55% center',
+    src: '/images/about/chan-dung-ngoai-troi.webp',
+    alt: 'Chân dung MC Anh Tâm mỉm cười cầm micro và kịch bản tại một sự kiện ngoài trời',
+    position: 'center 20%',
   },
   gala: {
     src: '/images/events/gala-dinner-hv-mc-van-minh.webp',
@@ -34,10 +33,70 @@ const img = {
     alt: 'MC Anh Tâm dẫn Lễ tổng kết năm 2026 của Công ty Sách và Giáo dục Phụng Hiếu',
     position: '50% center',
   },
-  graduation: {
-    src: '/images/events/le-tot-nghiep-hv-mc-van-minh.webp',
-    alt: 'MC Anh Tâm trên sân khấu Lễ tốt nghiệp của Học viện MC Văn Minh',
-    position: '48% center',
+  totDongStage: {
+    src: '/images/events/vang-mai-hao-khi-tot-dong.webp',
+    alt: 'MC Anh Tâm trong tà áo dài vàng cùng bạn dẫn trên sân khấu chương trình nghệ thuật "Vang mãi hào khí Tốt Động – Chúc Động"',
+    position: '52% center',
+  },
+  totDongArtist: {
+    src: '/images/experience/tot-dong-cung-nghe-si.webp',
+    alt: 'MC Anh Tâm trong tà áo dài vàng bên một nghệ sĩ biểu diễn tại Lễ kỷ niệm 600 năm Chiến thắng Tốt Động – Chúc Động',
+    position: 'center 62%',
+  },
+  freshmen: {
+    src: '/images/experience/chao-don-tan-sinh-vien-khoa-lich-su.webp',
+    alt: 'MC Anh Tâm dẫn chương trình Chào đón tân sinh viên Khoa Lịch sử, Trường Đại học Sư phạm Hà Nội',
+    position: 'center 40%',
+  },
+  freshmenK75: {
+    src: '/images/events/chao-tan-sinh-vien-k75-khoa-lich-su.webp',
+    alt: 'MC Anh Tâm dẫn chương trình Chào tân sinh viên Khóa 75, Khoa Lịch sử, Trường Đại học Sư phạm Hà Nội',
+    position: 'center 45%',
+  },
+  opening: {
+    src: '/images/events/le-khai-truong-anh-thao-group.webp',
+    alt: 'MC Anh Tâm trong chiếc váy hồng phấn dẫn Lễ khai trương Anh Thảo Group tại Hà Nội',
+    position: '46% center',
+  },
+  talkshow: {
+    src: '/images/events/toa-dam-phu-nu-viet-nam.webp',
+    alt: 'MC Anh Tâm dẫn Tọa đàm "Phụ nữ Việt Nam – Khát vọng và hành trình tỏa sáng" tại xã Quảng Bị',
+    position: '62% center',
+  },
+  openingTrade: {
+    src: '/images/events/le-khai-truong-ket-noi-thinh-vuong.webp',
+    alt: 'MC Anh Tâm trong tà áo dài hồng nhạt dẫn Lễ khai trương "Kết nối thịnh vượng – Vững bước tương lai" tại Hà Nội',
+    position: 'center 40%',
+  },
+  midAutumn: {
+    src: '/images/events/dem-hoi-trang-ram-quang-bi.webp',
+    alt: 'MC Anh Tâm trong trang phục trắng tại Đêm hội Trăng rằm xã Quảng Bị',
+    position: 'center 55%',
+  },
+  readingAmbassador: {
+    src: '/images/events/le-phat-dong-dai-su-van-hoa-doc.webp',
+    alt: 'MC Anh Tâm trong tà áo dài hồng tại Lễ phát động Cuộc thi Đại sứ Văn hóa đọc năm 2026',
+    position: '55% center',
+  },
+  bonsaiPortrait: {
+    src: '/images/events/quang-ba-cay-canh-chan-dung.webp',
+    alt: 'MC Anh Tâm mỉm cười bên cây cảnh nghệ thuật trong chương trình quảng bá cây cảnh Quảng Bị',
+    position: 'center 30%',
+  },
+  wedding: {
+    src: '/images/experience/le-thanh-hon.webp',
+    alt: 'MC Anh Tâm trong tà áo dài hồng dẫn Lễ thành hôn bên tháp bánh cưới và tường hoa',
+    position: 'center 40%',
+  },
+  launch: {
+    src: '/images/events/le-ra-mat-trung-tam-van-hoa-quang-bi.webp',
+    alt: 'MC Anh Tâm trong tà áo dài hồng tại Lễ ra mắt Trung tâm Văn hóa – Thể thao và Học tập cộng đồng xã Quảng Bị',
+    position: 'center 45%',
+  },
+  promo: {
+    src: '/images/experience/quang-ba-cay-canh-quang-bi.webp',
+    alt: 'MC Anh Tâm giới thiệu cây cảnh nghệ thuật Quảng Bị trong chương trình quảng bá trên không gian số',
+    position: '40% center',
   },
   community: {
     src: '/images/events/ngay-hoi-dai-doan-ket.webp',
@@ -57,7 +116,7 @@ const content: Profile = {
     { id: 'about', label: 'Giới thiệu' },
     { id: 'experience', label: 'Kinh nghiệm' },
     { id: 'style', label: 'Phong cách' },
-    { id: 'values', label: 'Giá trị' },
+    { id: 'video', label: 'Video' },
     { id: 'events', label: 'Hình ảnh' },
     { id: 'contact', label: 'Đặt lịch' },
   ],
@@ -68,8 +127,6 @@ const content: Profile = {
     highlightName: 'Tâm',
     roles: ['Người dẫn chương trình', 'Biên tập viên', 'Nhà giáo dục'],
     tagline: 'Dẫn bằng tư duy – Chạm bằng cảm xúc.',
-    quote:
-      'Tôi bước lên sân khấu không phải để tỏa sáng một mình, mà để cùng bạn thắp sáng câu chuyện của chính sự kiện ấy.',
     portrait: img.hero,
     primaryCta: { label: 'Đặt lịch ngay', href: '#contact' },
     secondaryCta: { label: 'Xem hình ảnh', href: '#events' },
@@ -90,20 +147,19 @@ const content: Profile = {
 
   /* TRANG 2 – LỜI NGỎ */
   story: {
-    heading: 'Không chỉ là cầm micro, đó là hành trình giữ nhịp cho những cảm xúc.',
-    question:
-      'Có người từng hỏi tôi: "Điều gì giữ chân một người làm giáo dục và biên tập nội dung đứng dưới ánh đèn sân khấu?"',
+    heading:
+      'Người ta có thể quên một câu dẫn hay, nhưng sẽ nhớ mãi cảm giác được kết nối và trân trọng trên sân khấu',
     paragraphs: [
-      'Câu trả lời nằm ở khoảnh khắc khi tiếng nhạc hiệu vang lên, ánh đèn hội trường dịu xuống và hàng trăm ánh mắt cùng hướng về một điểm. Ở giây phút ấy, tôi nhận ra mình không đơn thuần là người đọc lên những dòng kịch bản đã soạn sẵn. Tôi đang là chiếc cầu nối vô hình giữa ý đồ của người tổ chức và trái tim của người tham dự.',
-      'Với tôi, mỗi sự kiện là một sinh thể sống có nhịp đập riêng. Có những sân khấu đòi hỏi sự lắng đọng, trang nghiêm để tôn vinh những giá trị lịch sử trăm năm; có những không gian cần sự bùng nổ, rộn rã để gắn kết những tâm hồn trẻ; và cũng có những khoảnh khắc đời thường mộc mạc, nơi lời nói cần sự chân thành để lan tỏa giá trị của sản vật quê hương.',
-      'Nghề dẫn chương trình dạy tôi sự trân trọng: trân trọng từng thanh âm tiếng Việt, trân trọng công sức thầm lặng của ekip phía sau cánh gà, và trân trọng từng phút giây hiện diện của khán giả. Tôi bước lên sân khấu không phải để tỏa sáng một mình, mà để cùng bạn thắp sáng câu chuyện của chính sự kiện ấy.',
+      'Tôi thích cảm giác đứng trên sân khấu. Thích cái khoảnh khắc bước ra ánh đèn, cầm micro và thấy hàng trăm đôi mắt đang cùng chia sẻ một không gian, một cảm xúc.',
+      'Với tôi lúc mình đứng giữa sân khấu và khán giả, dùng sự chân thành, một chút duyên dáng, một chút tinh ý để kéo mọi người xích lại gần nhau hơn. Có những chương trình cần sự trang nghiêm, sâu lắng; có những buổi tiệc cần sự rộn ràng, quậy hết mình; cũng có những dấu ấn mộc. Ở đâu có người nghe, ở đó tôi muốn mang đến sự trọn vẹn.',
+      'Tôi làm giáo dục, làm biên tập nội dung và làm MC. Ba công việc tưởng khác nhau nhưng lại gặp nhau ở một điểm: hiểu người nghe cần gì, biết chọn đúng lời để nói và luôn giữ sự tử tế với từng khoảnh khắc mình xuất hiện.',
     ],
     photo: img.story,
   },
 
   /* TRANG 3 – GIỚI THIỆU */
   about: {
-    heading: 'MC Anh Tâm – Sự giao thoa giữa Chuẩn mực, Tư duy và Cảm xúc',
+    heading: 'Vì sao giữa hàng vạn profile, bạn có thể chọn MC Anh Tâm?',
     intro:
       'Được biết đến trong vai trò là một nhà giáo, một biên tập viên tại Voi Land và một người dẫn chương trình tâm huyết, MC Anh Tâm mang đến một màu sắc riêng biệt trên sân khấu: sự chỉn chu trong ngôn từ, sắc sảo trong tư duy nội dung và ấm áp trong phong thái giao tiếp.',
     photo: img.about,
@@ -125,7 +181,7 @@ const content: Profile = {
         title: 'Bản lĩnh của người cầm micro đa sắc màu',
         role: 'Người dẫn chương trình',
         description:
-          'Từ những buổi lễ kỷ niệm mang tầm vóc văn hóa – lịch sử đến những hội nghị chuyên đề, từ sân chơi trí tuệ học đường đến các đêm tiệc Gala sôi động hay những phiên Livestream thương mại, MC Anh Tâm luôn biết cách điều chỉnh "tần số" của mình để hòa quyện trọn vẹn với tinh thần của từng chương trình.',
+          'Với mọi sự kiện, MC Anh Tâm luôn biết cách điều chỉnh "tần số" của mình để hòa quyện trọn vẹn với tinh thần của từng chương trình.',
       },
     ],
   },
@@ -139,29 +195,29 @@ const content: Profile = {
         title: 'Sự kiện Văn hóa – Lịch sử',
         highlight: 'Chương trình Kỷ niệm 600 năm Chiến thắng Tốt Động',
         description:
-          'Với những chương trình mang chiều sâu lịch sử và tinh thần dân tộc, MC Anh Tâm thể hiện phong thái trang trọng, giọng đọc trầm ấm, hào sảng và giàu sức gợi. Từng lời dẫn được trau chuốt như những trang sử sống động, khơi dậy niềm tự hào và sự lắng đọng trong lòng người tham dự.',
-        image: ph('Sự kiện Văn hóa – Lịch sử', 'Bổ sung ảnh Kỷ niệm 600 năm Chiến thắng Tốt Động'),
+          'Với những chương trình mang chiều sâu lịch sử và tinh thần dân tộc, MC Anh Tâm thể hiện phong thái trang trọng, giọng đọc trầm ấm, hào sảng và giàu sức gợi.',
+        image: img.totDongArtist,
         bookingType: 'culture',
       },
       {
         title: 'Hội nghị – Tọa đàm chuyên đề',
         description:
-          'Đề cao sự chuẩn mực, khúc chiết và khả năng điều phối nhịp nhàng. Anh Tâm đóng vai trò là người giữ lửa cho các cuộc đối thoại, kết nối mạch lạc giữa diễn giả, khách mời và khán giả, đảm bảo tính trang trọng nhưng vẫn giữ được sự cởi mở, tương tác cao.',
-        image: img.conference,
+          'Đề cao sự chuẩn mực, khúc chiết và khả năng điều phối nhịp nhàng. Anh Tâm đóng vai trò là người giữ lửa cho các cuộc đối thoại, kết nối mạch lạc giữa diễn giả.',
+        image: img.talkshow,
         bookingType: 'conference',
       },
       {
-        title: 'Giáo dục & Sân chơi trí tuệ',
+        title: 'Chương trình Giáo dục & Sân chơi trí tuệ',
         highlight: 'Chương trình Rung Chuông Vàng và các hoạt động giáo dục học đường',
         description:
-          'Tận dụng thế mạnh của một nhà giáo, Anh Tâm dễ dàng thấu hiểu tâm lý học sinh, tạo nên không khí hào hứng, công bằng nhưng không kém phần kịch tính. Lối dẫn dắt gần gũi, truyền cảm hứng giúp các em tự tin tỏa sáng.',
-        image: img.graduation,
+          'Anh Tâm tạo nên không khí hào hứng, công bằng truyền cảm hứng giúp các em tự tin tỏa sáng.',
+        image: img.freshmen,
         bookingType: 'education',
       },
       {
         title: 'Gala Dinner & GEN Party',
         description:
-          'Rũ bỏ sự nghiêm nghị của hội trường, MC Anh Tâm mang đến nguồn năng lượng trẻ trung, hiện đại và tinh tế. Khả năng hoạt náo văn minh, hài hước có chừng mực giúp khuấy động không khí, gắn kết tập thể và tạo nên những đêm tiệc bùng nổ cảm xúc.',
+          'Khả năng hoạt náo văn minh, hài hước có chừng mực giúp khuấy động không khí, gắn kết tập thể và tạo nên những đêm tiệc bùng nổ cảm xúc.',
         image: img.gala,
         bookingType: 'gala',
       },
@@ -169,15 +225,15 @@ const content: Profile = {
         title: 'Livestream & Quảng bá thương mại',
         highlight: 'Các phiên Livestream quảng bá nông sản địa phương',
         description:
-          'Không sử dụng lối bán hàng ồn ào, Anh Tâm chọn cách kể câu chuyện phía sau mỗi sản phẩm – từ mồ hôi của người nông dân đến giá trị văn hóa của đặc sản quê hương. Sự chân thành và am hiểu nội dung giúp tạo dựng niềm tin bền vững giữa người sản xuất và khách hàng.',
-        image: ph('Livestream quảng bá nông sản', 'Bổ sung ảnh phiên Livestream nông sản'),
+          'Anh Tâm chọn cách kể câu chuyện phía sau mỗi sản phẩm. Sự chân thành và am hiểu nội dung giúp tạo dựng niềm tin bền vững giữa người sản xuất và khách hàng.',
+        image: img.promo,
         bookingType: 'livestream',
       },
       {
         title: 'Sự kiện Cưới hỏi & Dấu mốc gia đình',
         description:
-          'Nhẹ nhàng, ấm áp và tinh tế. Anh Tâm nâng niu từng khoảnh khắc thiêng liêng, kết nối nhịp cầu tình thân giữa hai gia đình bằng những lời chúc phúc chân thành, giàu chất thơ.',
-        image: ph('Sự kiện cưới hỏi', 'Bổ sung ảnh dẫn tiệc cưới'),
+          'Nhẹ nhàng, ấm áp và tinh tế. Anh Tâm nâng niu từng khoảnh khắc thiêng liêng, kết nối nhịp cầu tình thân giữa hai gia đình.',
+        image: img.wedding,
         bookingType: 'wedding',
       },
       {
@@ -194,7 +250,7 @@ const content: Profile = {
   styles: {
     heading: 'Đa sắc màu trong một bản sắc nhất quán',
     intro:
-      'Sự linh hoạt của MC Anh Tâm không đến từ việc thay đổi bản chất, mà đến từ khả năng thấu hiểu không gian để lựa chọn sắc thái phù hợp nhất.',
+      'Mỗi sân khấu là một cuộc gặp gỡ ngắn ngủi, Anh Tâm sẽ dẫn bằng cả trái tim, để từng phút giây trôi qua đều trở thành ký ức đẹp.',
     items: [
       {
         title: 'Trang trọng & Lịch lãm',
@@ -224,89 +280,123 @@ const content: Profile = {
     ],
   },
 
-  /* TRANG 7 – GIÁ TRỊ */
-  values: {
-    heading: '6 Điểm tựa làm nên sự tin cậy',
-    items: [
-      {
-        title: 'Ngôn ngữ chuẩn xác & Giàu tính thẩm mỹ',
-        description:
-          'Vốn từ phong phú, phát âm chuẩn mực, biết cách nhấn nhá và sử dụng ngôn từ phù hợp với từng đối tượng khán giả.',
-      },
-      {
-        title: 'Tư duy biên tập & Xây dựng kịch bản',
-        description:
-          'Khả năng đọc hiểu sâu sắc mục tiêu chương trình, chủ động phối hợp cùng Ban tổ chức để hoàn thiện kịch bản lời dẫn mạch lạc, có điểm nhấn.',
-      },
-      {
-        title: 'Bản lĩnh ứng biến sân khấu',
-        description:
-          'Sự bình tĩnh được rèn giũa qua môi trường giáo dục và sự kiện thực tế giúp xử lý khéo léo các tình huống phát sinh ngoài kịch bản.',
-      },
-      {
-        title: 'Tư duy điều phối & Kiểm soát thời lượng',
-        description:
-          'Luôn nắm rõ tổng thể chương trình, giữ nhịp độ diễn ra đúng tiến độ, phối hợp ăn ý với bộ phận âm thanh, ánh sáng và đạo diễn sân khấu.',
-      },
-      {
-        title: 'Khả năng kết nối & Truyền tải cảm xúc',
-        description:
-          'Không chỉ "nói" cho khán giả nghe, mà biết "lắng nghe" phản ứng của khán phòng để điều chỉnh cảm xúc kịp thời.',
-      },
-      {
-        title: 'Tác phong chuyên nghiệp & Tinh thần trách nhiệm',
-        description:
-          'Luôn có mặt sớm trước giờ diễn, nghiên cứu kỹ lưỡng thông tin khách hàng/sản phẩm và đặt sự thành công chung của sự kiện lên hàng đầu.',
-      },
-    ],
-  },
-
-  /* TRANG 8 & 9 – TRIẾT LÝ & THƠ */
+  /* TRIẾT LÝ LÀM NGHỀ */
   philosophy: {
-    heading: 'Khi chiếc micro trở thành nhịp cầu của những ký ức',
+    heading: 'Kết nối từ sự hiện diện trọn vẹn',
     paragraphs: [
-      'Mỗi chương trình đều mang trong mình một câu chuyện riêng. Mỗi sân khấu đều cất giữ một tần số cảm xúc riêng. Ánh đèn rồi sẽ tắt, âm thanh rồi sẽ lắng xuống, nhưng dư âm của một sự kiện thành công sẽ ở lại rất lâu trong lòng người tham dự.',
-      'Với tôi, người dẫn chương trình không phải là nhân vật chính của bữa tiệc, mà là người giữ lửa thầm lặng – người dùng ngôn từ để kết nối những mảnh ghép rời rạc thành một bức tranh trọn vẹn, để mỗi khoảnh khắc trôi qua đều trở thành một ký ức đáng nhớ.',
-    ],
-    poemTitle: 'Thanh âm từ trái tim người giữ nhịp',
-    poem: [
-      [
-        'Mượn thanh âm dệt nhịp cầu cảm xúc,',
-        'Gom yêu thương thành câu chuyện trên đài.',
-        'Không phô trương giữa muôn vàn ánh sáng,',
-        'Chỉ lặng thầm giữ lửa suốt đêm dài.',
-      ],
-      [
-        'Mỗi lời trao là một lần trân trọng,',
-        'Chạm tim người bằng sự thật chân thành.',
-        'Để khoảnh khắc hóa thành miền ký ức,',
-        'Trong dư âm còn đọng mãi an lành.',
-      ],
+      'Anh Tâm tin rằng điều làm nên linh hồn của một sự kiện không nằm ở kịch bản dài bao nhiêu trang, mà nằm ở việc người đứng trên sân khấu có thật sự đặt trái tim mình vào đó hay không.',
+      'Sân khấu có thể rực rỡ hoặc mộc mạc, khán giả có thể hàng trăm người hay chỉ một góc nhỏ thân tình – nhưng chỉ cần mình đứng đó với sự trân trọng, nói bằng sự thật lòng và bắt đúng nhịp cảm xúc của người nghe, thì từng khoảnh khắc trôi qua đều trở nên đáng giá.',
     ],
   },
 
   /* HÌNH ẢNH SỰ KIỆN (ảnh thật) */
   events: [
+    {
+      caption: 'Chương trình nghệ thuật "Vang mãi hào khí Tốt Động – Chúc Động"',
+      category: 'Văn hóa – Lịch sử',
+      image: img.totDongStage,
+    },
+    { caption: 'Lễ khai trương Anh Thảo Group', category: 'Khai trương', image: img.opening },
+    {
+      caption: 'Lễ ra mắt Trung tâm Văn hóa – Thể thao xã Quảng Bị',
+      category: 'Cộng đồng',
+      image: img.launch,
+    },
+    {
+      caption: 'Chào tân sinh viên Khóa 75 – Khoa Lịch sử, ĐH Sư phạm Hà Nội',
+      category: 'Giáo dục',
+      image: img.freshmenK75,
+    },
     { caption: 'Gala Dinner – Học viện MC Văn Minh', category: 'Gala Dinner', image: img.gala },
-    { caption: 'Hội nghị chuyên đề', category: 'Hội nghị', image: img.hero },
-    { caption: 'Ngày hội Đại đoàn kết toàn dân tộc', category: 'Cộng đồng', image: img.community },
-    { caption: 'Lễ tổng kết năm 2026 – Công ty Sách và Giáo dục Phụng Hiếu', category: 'Hội nghị', image: img.conference },
-    { caption: 'Hậu trường – chuẩn bị kịch bản lời dẫn', category: 'Hậu trường', image: img.story },
-    { caption: 'Lễ tốt nghiệp Wedding K81 – Event K76, Học viện MC Văn Minh', category: 'Giáo dục', image: img.about },
-    { caption: 'Lễ tốt nghiệp – Học viện MC Văn Minh', category: 'Giáo dục', image: img.graduation },
+    {
+      caption: 'Tọa đàm "Phụ nữ Việt Nam – Khát vọng và hành trình tỏa sáng"',
+      category: 'Tọa đàm',
+      image: img.talkshow,
+    },
+    { caption: 'Lễ khai trương "Kết nối thịnh vượng – Vững bước tương lai"', category: 'Khai trương', image: img.openingTrade },
+    { caption: 'Đêm hội Trăng rằm – xã Quảng Bị', category: 'Cộng đồng', image: img.midAutumn },
+    { caption: 'Lễ phát động Cuộc thi Đại sứ Văn hóa đọc năm 2026', category: 'Giáo dục', image: img.readingAmbassador },
+    { caption: 'Quảng bá cây cảnh nghệ thuật Quảng Bị', category: 'Quảng bá', image: img.bonsaiPortrait },
   ],
+
+  /*
+   * VIDEO – file MP4 đã nén trong public/videos (+ ảnh bìa trong public/images/videos), hoặc link YouTube.
+   * Video gốc nằm trong raw-videos/ (không đưa lên web). Video quay dọc đặt orientation: 'portrait'.
+   */
+  videos: {
+    heading: 'Khoảnh khắc qua ống kính',
+    intro: 'Bấm vào video để xem phong thái dẫn chương trình của MC Anh Tâm trên sân khấu.',
+    featured: {
+      src: '/videos/ky-niem-600-nam-tot-dong.mp4',
+      poster: '/images/videos/ky-niem-600-nam-tot-dong.webp',
+      title: 'Lễ kỷ niệm 600 năm Chiến thắng Tốt Động – Chúc Động (1426 – 2026)',
+      category: 'Văn hóa – Lịch sử',
+      duration: '1:20',
+    },
+    clips: [
+      {
+        src: '/videos/le-thanh-hon-20-09.mp4',
+        poster: '/images/videos/le-thanh-hon-20-09.webp',
+        position: 'center 41%',
+        title: 'Lễ thành hôn',
+        category: 'Cưới hỏi',
+        orientation: 'portrait',
+        duration: '1:23',
+      },
+      {
+        src: '/videos/ngay-hoi-dai-doan-ket.mp4',
+        poster: '/images/videos/ngay-hoi-dai-doan-ket.webp',
+        title: 'Ngày hội Đại đoàn kết toàn dân tộc – Thôn 5, xã Quảng Bị',
+        category: 'Cộng đồng',
+        duration: '1:54',
+      },
+      {
+        src: '/videos/trang-ram-quang-bi-2026.mp4',
+        poster: '/images/videos/trang-ram-quang-bi-2026.webp',
+        title: 'Đêm hội Trăng rằm – xã Quảng Bị',
+        category: 'Trung thu',
+        duration: '2:44',
+      },
+      {
+        src: '/videos/hoi-thi-thcs-phu-la.mp4',
+        poster: '/images/videos/hoi-thi-thcs-phu-la.webp',
+        position: 'center 68%',
+        title: 'Hội thi chào mừng ngày Nhà giáo Việt Nam – Trường THCS Phú La',
+        category: 'Giáo dục',
+        orientation: 'portrait',
+        duration: '1:40',
+      },
+      {
+        src: '/videos/cay-canh-nghe-thuat-quang-bi.mp4',
+        poster: '/images/videos/cay-canh-nghe-thuat-quang-bi.webp',
+        title: 'Đưa cây cảnh nghệ thuật Quảng Bị lên không gian số',
+        category: 'Quảng bá địa phương',
+        duration: '0:33',
+      },
+      {
+        src: '/videos/hau-truong-ghi-hinh-nha-xuong.mp4',
+        poster: '/images/videos/hau-truong-ghi-hinh-nha-xuong.webp',
+        position: 'center 40%',
+        title: 'Hậu trường ghi hình tại nhà xưởng',
+        category: 'Hậu trường',
+        orientation: 'portrait',
+        duration: '0:11',
+      },
+    ],
+  },
 
   contact: {
     phone: '0973 125 895',
     zalo: '0973125895',
-    email: 'tamnguyenthi28022003@gmail.com',
+    email: 'tamhnue2003@gmail.com',
     area: 'Hà Nội',
-    promises: [
-      'Nghiên cứu kỹ lưỡng thông tin chương trình, khách hàng và sản phẩm',
-      'Phối hợp cùng Ban tổ chức hoàn thiện kịch bản lời dẫn',
-      'Có mặt sớm trước giờ diễn',
-      'Giữ nhịp chương trình đúng tiến độ',
-    ],
+    /* TRANG 8 – LỜI HẸN VỚI ĐỐI TÁC */
+    invitation: {
+      label: 'Lời hẹn với đối tác',
+      lead: 'Một chương trình thành công không chỉ nằm ở kịch bản hay sân khấu đẹp, mà nằm ở cảm giác người tham dự mang về sau khi ra về.',
+      message:
+        'Nếu bạn đang tìm một người dẫn chương trình có lửa nghề, bắt nhịp nhanh, xử lý sân khấu linh hoạt, nói chuyện có duyên và làm việc hết mình, tôi rất vui được đồng hành cùng bạn. Tôi không hứa những lời hoa mỹ – tôi cam kết sự nghiêm túc, sự chuẩn bị kỹ và nỗ lực để bạn không phải thất vọng khi chọn mình.',
+    },
   },
 
   socials: [{ label: 'Facebook', url: 'https://www.facebook.com/Tam.nguyen28.02.2003' }],

@@ -1,17 +1,9 @@
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
-import { profile } from '@/data/profile';
-import {
-  BOOKING_PREFILL_EVENT,
-  EVENT_TYPES,
-  type BookingData,
-  type BookingErrors,
-  type ContactChannel,
-  type EventTypeId,
-} from '@/types/booking';
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent, type MouseEvent } from 'react';
+import { BOOKING_PREFILL_EVENT, EVENT_TYPES, type BookingData, type BookingErrors, type EventTypeId } from '@/types/booking';
 import { STEP_FIELDS, todayISO, validateField, validateStep } from '@/lib/bookingValidation';
-import { BookingError, submitBooking } from '@/services/booking';
+import { buildZaloMessage, copyText, zaloChatUrl } from '@/services/booking';
 import { Field, describedBy } from './Field';
-import { BookingSuccess } from './BookingSuccess';
+import { BookingSuccess, ZaloIcon } from './BookingSuccess';
 import styles from './Booking.module.css';
 
 const INITIAL: BookingData = {
@@ -22,22 +14,15 @@ const INITIAL: BookingData = {
   guests: '',
   name: '',
   phone: '',
-  email: '',
-  channel: 'zalo',
   message: '',
-  website: '',
 };
 
 const TIMES = ['Buổi sáng', 'Buổi chiều', 'Buổi tối', 'Cả ngày'];
 const GUESTS = ['Dưới 100 khách', '100 – 300 khách', '300 – 500 khách', 'Trên 500 khách'];
-const CHANNELS: { id: ContactChannel; label: string }[] = [
-  { id: 'zalo', label: 'Zalo' },
-  { id: 'phone', label: 'Gọi điện' },
-  { id: 'email', label: 'Email' },
-];
-const STEP_TITLES = ['Về chương trình', 'Thông tin liên hệ'];
+const STEP_TITLES = ['Về chương trình', 'Thông tin của bạn'];
 
-type Status = 'idle' | 'submitting' | 'success' | 'error';
+/** 'zalo' = đã chuyển sang bước dán & gửi trên Zalo. */
+type Status = 'idle' | 'zalo';
 
 export function BookingForm() {
   const [data, setData] = useState<BookingData>(INITIAL);
@@ -45,7 +30,8 @@ export function BookingForm() {
   const [touched, setTouched] = useState<Partial<Record<keyof BookingData, boolean>>>({});
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<Status>('idle');
-  const [submitError, setSubmitError] = useState('');
+  /** Kết quả sao chép tin nhắn: null = chưa sao chép. */
+  const [copied, setCopied] = useState<boolean | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const stepTitleRef = useRef<HTMLHeadingElement>(null);
   const prevStep = useRef(step);
@@ -56,7 +42,7 @@ export function BookingForm() {
       const type = (e as CustomEvent<EventTypeId>).detail;
       setData((d) => ({ ...d, eventType: type }));
       setErrors((er) => ({ ...er, eventType: undefined }));
-      setStatus((s) => (s === 'success' ? 'idle' : s));
+      setStatus('idle');
       setStep(0);
     };
     window.addEventListener(BOOKING_PREFILL_EVENT, onPrefill);
@@ -77,7 +63,6 @@ export function BookingForm() {
     // Ô đã từng báo lỗi thì kiểm tra lại ngay khi sửa, để lỗi biến mất kịp thời
     const recheck: BookingErrors = {};
     if (touched[field] || errors[field]) recheck[field] = validateField(field, next);
-    if (field === 'channel' && (touched.email || errors.email)) recheck.email = validateField('email', next);
     if (Object.keys(recheck).length) setErrors((er) => ({ ...er, ...recheck }));
   };
 
@@ -106,34 +91,59 @@ export function BookingForm() {
     return true;
   };
 
-  const onSubmit = async (e: FormEvent) => {
+  const message = buildZaloMessage(data);
+
+  /** Sao chép tin nhắn (gọi ngay trong lượt bấm) và ghi nhận kết quả. */
+  const copyMessage = () => {
+    copyText(message).then(setCopied);
+  };
+
+  // Nhấn Enter trong form: bước 1 → bước 2; bước 2 → màn hình gửi qua Zalo (khách tự bấm mở Zalo ở đó).
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!checkStep()) return;
     if (step === 0) {
       setStep(1);
       return;
     }
-    setStatus('submitting');
-    setSubmitError('');
-    try {
-      await submitBooking(data);
-      setStatus('success');
-    } catch (err) {
-      setStatus('error');
-      setSubmitError(err instanceof BookingError ? err.message : 'Đã có lỗi xảy ra. Vui lòng thử lại.');
+    setCopied(null);
+    setStatus('zalo');
+  };
+
+  // Nút "Gửi qua Zalo" là thẻ <a> mở Zalo ở tab mới → không bị chặn popup, mở thẳng app Zalo trên điện thoại.
+  const onZaloClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!checkStep()) {
+      e.preventDefault();
+      return;
     }
+    copyMessage();
+    // Đổi màn hình sau khi trình duyệt đã mở link (link bị gỡ khỏi trang ngay sẽ không mở được).
+    setTimeout(() => setStatus('zalo'), 0);
   };
 
   const reset = () => {
     setData(INITIAL);
     setErrors({});
     setTouched({});
+    setCopied(null);
     setStatus('idle');
     setStep(0);
   };
 
-  if (status === 'success') {
-    return <BookingSuccess data={data} onReset={reset} />;
+  if (status === 'zalo') {
+    return (
+      <BookingSuccess
+        message={message}
+        copied={copied}
+        zaloUrl={zaloChatUrl()}
+        onCopy={copyMessage}
+        onEdit={() => {
+          setStatus('idle');
+          setStep(1);
+        }}
+        onReset={reset}
+      />
+    );
   }
 
   const err = (f: keyof BookingData) => errors[f];
@@ -258,53 +268,20 @@ export function BookingForm() {
             />
           </Field>
 
-          <div className={styles.row}>
-            <Field id="bk-phone" label="Số điện thoại" required error={err('phone')}>
-              <input
-                id="bk-phone"
-                type="tel"
-                inputMode="tel"
-                autoComplete="tel"
-                className={styles.input}
-                placeholder="0901 234 567"
-                value={data.phone}
-                onChange={onInput('phone')}
-                onBlur={onBlur('phone')}
-                aria-invalid={!!err('phone')}
-                aria-required="true"
-                aria-describedby={describedBy('bk-phone', undefined, err('phone'))}
-              />
-            </Field>
-
-            <Field id="bk-channel" label="Liên hệ với bạn qua">
-              <select
-                id="bk-channel"
-                className={`${styles.input} ${styles.select}`}
-                value={data.channel}
-                onChange={onInput('channel')}
-              >
-                {CHANNELS.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.label}
-                  </option>
-                ))}
-              </select>
-            </Field>
-          </div>
-
-          <Field id="bk-email" label="Email" required={data.channel === 'email'} error={err('email')}>
+          <Field id="bk-phone" label="Số điện thoại" required error={err('phone')}>
             <input
-              id="bk-email"
-              type="email"
-              inputMode="email"
-              autoComplete="email"
+              id="bk-phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
               className={styles.input}
-              placeholder="ten@email.com"
-              value={data.email}
-              onChange={onInput('email')}
-              onBlur={onBlur('email')}
-              aria-invalid={!!err('email')}
-              aria-describedby={describedBy('bk-email', undefined, err('email'))}
+              placeholder="0901 234 567"
+              value={data.phone}
+              onChange={onInput('phone')}
+              onBlur={onBlur('phone')}
+              aria-invalid={!!err('phone')}
+              aria-required="true"
+              aria-describedby={describedBy('bk-phone', undefined, err('phone'))}
             />
           </Field>
 
@@ -330,21 +307,6 @@ export function BookingForm() {
               aria-describedby={describedBy('bk-message', undefined, err('message'))}
             />
           </Field>
-
-          {/* Honeypot: ẩn với người dùng, bot thường tự điền */}
-          <div className={styles.hp} aria-hidden="true">
-            <label htmlFor="bk-website">Website</label>
-            <input id="bk-website" tabIndex={-1} autoComplete="off" value={data.website} onChange={onInput('website')} />
-          </div>
-        </div>
-      )}
-
-      {status === 'error' && (
-        <div className={styles.alert} role="alert">
-          <p>{submitError}</p>
-          <a href={`https://zalo.me/${profile.contact.zalo}`} target="_blank" rel="noopener noreferrer">
-            Nhắn Zalo cho {profile.brand.name} →
-          </a>
         </div>
       )}
 
@@ -354,21 +316,29 @@ export function BookingForm() {
             Quay lại
           </button>
         )}
-        <button type="submit" className={`btn btn--primary ${styles.next}`} disabled={status === 'submitting'}>
-          {status === 'submitting' ? (
-            <>
-              <span className={styles.spinner} aria-hidden="true" />
-              Đang gửi…
-            </>
-          ) : step === 0 ? (
-            'Tiếp tục →'
-          ) : (
-            'Gửi yêu cầu'
-          )}
-        </button>
+        {step === 0 ? (
+          <button type="submit" className={`btn btn--primary ${styles.next}`}>
+            Tiếp tục →
+          </button>
+        ) : (
+          <a
+            href={zaloChatUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`btn btn--primary ${styles.next}`}
+            onClick={onZaloClick}
+          >
+            <ZaloIcon />
+            Gửi qua Zalo
+          </a>
+        )}
       </div>
 
-      <p className={styles.privacy}>Thông tin của bạn chỉ được dùng để trao đổi về chương trình.</p>
+      <p className={styles.privacy}>
+        {step === 0
+          ? 'Thông tin của bạn chỉ được dùng để trao đổi về chương trình.'
+          : 'Bấm “Gửi qua Zalo”: nội dung đặt lịch được sao chép sẵn, bạn chỉ cần dán vào khung chat Zalo và gửi.'}
+      </p>
     </form>
   );
 }

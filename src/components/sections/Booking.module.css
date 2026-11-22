@@ -23,6 +23,20 @@
   gap: 24px;
 }
 
+/* Lời hẹn với đối tác */
+.message {
+  margin-bottom: 24px;
+  padding: 18px 20px;
+  border-left: 2px solid var(--c-gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--c-bg-alt);
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--c-plum);
+}
+
 /* Liên hệ nhanh */
 .quickLabel {
   margin-bottom: 10px;
@@ -79,42 +93,6 @@
   flex: 1;
   height: 1px;
   background: var(--c-line);
-}
-
-/* Cam kết */
-.promises {
-  display: grid;
-  gap: 12px;
-}
-
-.promises li {
-  position: relative;
-  padding-left: 30px;
-  font-size: var(--fs-sm);
-  color: var(--c-plum);
-}
-
-.promises li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 3px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--c-rose-soft);
-}
-
-.promises li::after {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 7px;
-  width: 5px;
-  height: 9px;
-  border-right: 2px solid var(--c-rose-deep);
-  border-bottom: 2px solid var(--c-rose-deep);
-  transform: rotate(45deg);
 }
 
 /* Thông tin liên hệ */

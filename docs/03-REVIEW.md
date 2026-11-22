@@ -26,7 +26,7 @@ src/
 ├─ styles/base.css          ← reset, nút, .snap-row
 ├─ types/booking.ts         ← loại chương trình & dữ liệu form
 ├─ lib/bookingValidation.ts ← kiểm tra SĐT/email/ngày
-├─ services/booking.ts      ← gửi form (Formspree / Google Sheets)
+├─ services/booking.ts      ← soạn tin nhắn đặt lịch + mở Zalo
 ├─ hooks/                   ← useActiveSection (scroll-spy), useScrollLock
 └─ components/
    ├─ common/               ← Section, SmartImage, Reveal, Lightbox
@@ -50,8 +50,7 @@ src/
 | Ảnh nặng làm chậm trên 4G | Nén WebP ≤ 200 KB; ảnh hero ≤ 300 KB; luôn giữ `ratio` để không nhảy layout |
 | Font Google tải chậm | Đã `preconnect` + `display=swap`; có thể tự host font sau |
 | Trang dài (~10 màn hình trên điện thoại) | Thanh "Đặt lịch" nổi ở đáy giúp khách luôn có nút hành động; menu có scroll-spy |
-| Form đặt lịch cần nơi nhận dữ liệu | Đã code sẵn Formspree / Google Sheets – chỉ cần điền `VITE_BOOKING_ENDPOINT` (docs/06) |
-| Spam form | Honeypot; nếu vẫn bị spam có thể bật reCAPTCHA của Formspree |
+| Form đặt lịch cần nơi nhận dữ liệu | Gửi qua Zalo: sao chép tin nhắn soạn sẵn + mở chat Zalo, không cần máy chủ (docs/06) |
 | SEO cho trang SPA | Đủ cho trang cá nhân; nếu cần SEO mạnh hơn có thể thêm prerender (vite-plugin-prerender) |
 
 ## Lệnh
