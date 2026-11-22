@@ -23,7 +23,6 @@ export interface Hero {
   roles: string[];
   /** Slogan chính. */
   tagline: string;
-  quote: string;
   portrait: ImageAsset;
   /** Nhãn nổi trên ảnh (tuỳ chọn). Chỉ điền khi có số liệu thật. */
   badge?: { value: string; label: string };
@@ -34,7 +33,6 @@ export interface Hero {
 /** Trang 2 – Lời ngỏ */
 export interface Story {
   heading: string;
-  question: string;
   paragraphs: string[];
   photo: ImageAsset;
 }
@@ -74,25 +72,39 @@ export interface HostingStyle {
   suitableFor?: string;
 }
 
-/** Trang 7 – Giá trị */
-export interface Value {
-  title: string;
-  description: string;
-}
-
-/** Trang 8 & 9 – Triết lý & thơ */
+/** Triết lý làm nghề */
 export interface Philosophy {
   heading: string;
   paragraphs: string[];
-  poemTitle: string;
-  /** Mỗi khổ thơ là một mảng các câu. */
-  poem: string[][];
 }
 
 export interface EventItem {
   caption: string;
   category: string;
   image: ImageAsset;
+}
+
+/**
+ * Video – một trong hai nguồn:
+ *  - `src`: file MP4 đã nén đặt trong public/videos (ví dụ '/videos/ten-video.mp4') – được ưu tiên.
+ *  - `youtube`: link YouTube (youtube.com/watch?v=…, youtu.be/…, youtube.com/shorts/…).
+ * Không có nguồn nào thì hiện khung chờ kèm `label` (chỉ khi chạy dev – bản build tự ẩn).
+ */
+export interface VideoItem {
+  src?: string;
+  youtube?: string;
+  title: string;
+  category: string;
+  /** 'landscape' = ngang 16:9 (mặc định) · 'portrait' = dọc 9:16 (quay dọc, Shorts, TikTok/Reels). */
+  orientation?: 'landscape' | 'portrait';
+  /** Ảnh bìa (ví dụ '/images/videos/...webp'); bỏ trống thì dùng ảnh bìa YouTube (nếu có). */
+  poster?: string;
+  /** Điểm lấy nét khi cắt ảnh bìa (CSS object-position), ví dụ 'center 30%'. */
+  position?: string;
+  /** Thời lượng hiển thị, ví dụ '1:30'. */
+  duration?: string;
+  /** Ghi chú video cần bổ sung – hiển thị trên khung chờ. */
+  label?: string;
 }
 
 export interface SocialLink {
@@ -109,8 +121,15 @@ export interface Contact {
   area: string;
   /** Giờ nhận liên hệ (tuỳ chọn). */
   hours?: string;
-  /** Các điểm cam kết hiển thị cạnh form đặt lịch. */
-  promises: string[];
+  /** Trang 8 – Lời hẹn với đối tác, hiển thị ở phần Đặt lịch. */
+  invitation: {
+    /** Nhãn nhỏ phía trên tiêu đề phần Đặt lịch. */
+    label: string;
+    /** Câu mở đầu – hiển thị dưới tiêu đề. */
+    lead: string;
+    /** Lời nhắn – hiển thị phía trên nút liên hệ nhanh. */
+    message: string;
+  };
 }
 
 export interface Profile {
@@ -122,9 +141,10 @@ export interface Profile {
   about: About;
   experience: { heading: string; subtitle: string; areas: ExperienceArea[] };
   styles: { heading: string; intro: string; items: HostingStyle[] };
-  values: { heading: string; items: Value[] };
   philosophy: Philosophy;
   events: EventItem[];
+  /** Video: `featured` (nên là video ngang) phát ngay tại chỗ; `clips` là dãy video vuốt ngang. */
+  videos: { heading: string; intro: string; featured: VideoItem; clips: VideoItem[] };
   contact: Contact;
   socials: SocialLink[];
 }

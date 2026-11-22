@@ -24,8 +24,6 @@ export const EVENT_TYPES: EventTypeOption[] = [
   { id: 'other', label: 'Khác' },
 ];
 
-export type ContactChannel = 'zalo' | 'phone' | 'email';
-
 export interface BookingData {
   eventType: EventTypeId | '';
   date: string;
@@ -34,11 +32,7 @@ export interface BookingData {
   guests: string;
   name: string;
   phone: string;
-  email: string;
-  channel: ContactChannel;
   message: string;
-  /** Honeypot chống spam – người thật để trống. */
-  website: string;
 }
 
 export type BookingErrors = Partial<Record<keyof BookingData, string>>;

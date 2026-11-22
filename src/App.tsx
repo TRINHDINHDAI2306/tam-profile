@@ -7,8 +7,8 @@ import { Story } from '@/components/sections/Story';
 import { About } from '@/components/sections/About';
 import { Experience } from '@/components/sections/Experience';
 import { HostingStyles } from '@/components/sections/HostingStyles';
-import { Values } from '@/components/sections/Values';
 import { Philosophy } from '@/components/sections/Philosophy';
+import { Videos } from '@/components/sections/Videos';
 import { Events } from '@/components/sections/Events';
 import { Booking } from '@/components/sections/Booking';
 
@@ -24,8 +24,8 @@ export default function App() {
         <About /> {/* Trang 3 – Giới thiệu */}
         <Experience /> {/* Trang 4 & 5 – Kinh nghiệm */}
         <HostingStyles /> {/* Trang 6 – Phong cách */}
-        <Values /> {/* Trang 7 – Giá trị */}
-        <Philosophy /> {/* Trang 8 & 9 – Triết lý & thơ */}
+        <Philosophy /> {/* Triết lý làm nghề */}
+        <Videos />
         <Events />
         <Booking />
       </main>

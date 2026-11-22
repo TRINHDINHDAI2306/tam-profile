@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { profile } from '@/data/profile';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useScrollLock } from '@/hooks/useScrollLock';
+import Logo from '@/components/common/Logo';
 import styles from './Header.module.css';
 
 export function Header() {
@@ -30,7 +31,9 @@ export function Header() {
       <header className={`${styles.header} ${scrolled || open ? styles.solid : ''}`}>
         <div className={`container ${styles.bar}`}>
           <a href="#hero" className={styles.logo} onClick={() => setOpen(false)}>
-            <span className={styles.mono}>{brand.monogram}</span>
+            <span className={styles.mono}>
+              <Logo />
+            </span>
             <span className={styles.name}>{brand.name}</span>
           </a>
 

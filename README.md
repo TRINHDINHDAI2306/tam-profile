@@ -19,10 +19,17 @@ Mọi chữ, ảnh, số điện thoại, Zalo… nằm trong **một file**: `s
 
 - Ảnh: đặt vào `public/images/...`, điền `src: '/images/...'`. Để trống `src` sẽ hiện khung placeholder.
 - Danh sách ảnh cần chụp: `docs/04-IMAGE-CHECKLIST.md`.
+- Video: khai báo trong `videos` của `src/data/profile.ts`. Hai cách:
+  - **File MP4**: video gốc để trong `raw-videos/` (không đưa lên git/web), nén bằng ffmpeg sang
+    `public/videos/*.mp4` (H.264 720p, `-movflags +faststart`), ảnh bìa WebP trong `public/images/videos/`,
+    rồi điền `src` + `poster`. Video iPhone HDR (HLG) nên chuyển SDR trước bằng `avconvert` để màu không bị bạc.
+  - **YouTube**: dán link vào `youtube`.
+  `featured` phát ngay tại chỗ (nên là video ngang); video quay dọc đặt `orientation: 'portrait'`.
+  Nút "Xem video dẫn chương trình" ở Hero tự hiện khi `featured` có nguồn.
 
 ## Form đặt lịch
 
-Cần cấu hình nơi nhận dữ liệu (Formspree hoặc Google Sheets) qua `VITE_BOOKING_ENDPOINT` – xem `docs/06-BOOKING-FORM.md`.
+Khách điền 2 bước rồi bấm **Gửi qua Zalo**: nội dung đặt lịch được sao chép sẵn và Zalo mở khung chat với MC – khách dán và gửi. Không cần máy chủ hay cấu hình – xem `docs/06-BOOKING-FORM.md`.
 
 ## Cấu trúc
 
@@ -31,7 +38,7 @@ src/
 ├─ data/profile.ts        nội dung
 ├─ types/                 kiểu dữ liệu (profile, booking)
 ├─ styles/tokens.css      màu, font, khoảng cách (bảng màu "hồng sang")
-├─ lib/ services/         kiểm tra & gửi form đặt lịch
+├─ lib/ services/         kiểm tra form, soạn tin nhắn Zalo
 ├─ hooks/                 scroll-spy, khóa cuộn
 └─ components/
    ├─ common/             Section, SmartImage, Reveal, Lightbox
@@ -54,4 +61,4 @@ src/
 
 ## Deploy
 
-Vercel / Netlify: build command `npm run build`, output `dist`, thêm biến môi trường `VITE_BOOKING_ENDPOINT`.
+Vercel / Netlify: build command `npm run build`, output `dist` (cần HTTPS để nút sao chép tin nhắn hoạt động – Vercel/Netlify có sẵn).

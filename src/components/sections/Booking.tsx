@@ -13,16 +13,17 @@ export function Booking() {
   return (
     <Section
       id="contact"
-      eyebrow="Đặt lịch"
+      eyebrow={contact.invitation.label}
       title={
         <>
           {vn('Trao đổi về')} <em>{vn('chương trình')}</em> {vn('của bạn')}
         </>
       }
-      subtitle={`Để lại thông tin – ${profile.brand.name} sẽ liên hệ lại với bạn sớm nhất.`}
+      subtitle={contact.invitation.lead}
     >
       <div className={styles.layout}>
         <div className={styles.quick}>
+          <p className={styles.message}>{contact.invitation.message}</p>
           <p className={styles.quickLabel}>Liên hệ nhanh</p>
           <div className={styles.quickBtns}>
             <a href={tel} className={styles.quickBtn}>
@@ -44,12 +45,6 @@ export function Booking() {
         </Reveal>
 
         <aside className={styles.info} aria-label="Thông tin đặt lịch">
-          <ul className={styles.promises}>
-            {contact.promises.map((p) => (
-              <li key={p}>{p}</li>
-            ))}
-          </ul>
-
           <dl className={styles.details}>
             <div>
               <dt>Điện thoại</dt>

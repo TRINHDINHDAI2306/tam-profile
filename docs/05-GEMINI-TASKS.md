@@ -45,7 +45,7 @@ favicon PNG 180x180 (apple-touch-icon) vào index.html. Ảnh OG đặt ở publ
 output: `dist`). Không commit file .env.
 ```
 
-## G6 · Kết nối form đặt lịch với Google Sheets
+## G6 · ~~Kết nối form đặt lịch với Google Sheets~~ (bỏ – form đã chuyển sang gửi qua Zalo, xem docs/06)
 
 ```
 Đọc AGENTS.md và docs/06-BOOKING-FORM.md (form đã code xong, KHÔNG sửa giao diện form).

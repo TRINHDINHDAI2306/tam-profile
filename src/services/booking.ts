@@ -1,69 +1,61 @@
+import { profile } from '@/data/profile';
 import { EVENT_TYPES, type BookingData } from '@/types/booking';
-import { normalizePhone } from '@/lib/bookingValidation';
 
 /**
- * Gửi yêu cầu đặt lịch – không cần backend riêng.
- * Cấu hình bằng biến môi trường VITE_BOOKING_ENDPOINT (xem .env.example, docs/06-BOOKING-FORM.md):
- *  - Formspree:  https://formspree.io/f/<id>              → POST JSON, đọc phản hồi.
- *  - Google Sheets (Apps Script Web App): https://script.google.com/macros/s/<id>/exec
- *                                                          → POST text/plain, chế độ no-cors.
- * Chưa cấu hình: chế độ dev giả lập gửi thành công; bản build báo lỗi để khách liên hệ trực tiếp.
+ * Đặt lịch qua Zalo – không cần máy chủ.
+ * zalo.me không cho điền sẵn tin nhắn, nên web sao chép nội dung đặt lịch rồi mở khung chat Zalo với MC;
+ * khách chỉ cần dán và bấm Gửi.
  */
-const ENDPOINT = (import.meta.env.VITE_BOOKING_ENDPOINT as string | undefined)?.trim() ?? '';
+export const zaloChatUrl = () => `https://zalo.me/${profile.contact.zalo}`;
 
-export class BookingError extends Error {}
+const formatDate = (iso: string) => {
+  const [y, m, d] = iso.split('-');
+  return y && m && d ? `${d}/${m}/${y}` : iso;
+};
 
-export function buildPayload(data: BookingData) {
-  return {
-    loai_chuong_trinh: EVENT_TYPES.find((t) => t.id === data.eventType)?.label ?? data.eventType,
-    ngay: data.date,
-    buoi: data.time,
-    dia_diem: data.location.trim(),
-    so_khach: data.guests,
-    ho_ten: data.name.trim(),
-    so_dien_thoai: normalizePhone(data.phone),
-    email: data.email.trim(),
-    kenh_lien_he: data.channel,
-    loi_nhan: data.message.trim(),
-    gui_luc: new Date().toISOString(),
-    _subject: `Đặt lịch MC – ${data.name.trim()} – ${data.date}`,
-  };
+/** Tin nhắn đặt lịch soạn sẵn để dán vào Zalo. */
+export function buildZaloMessage(data: BookingData): string {
+  const lines: [string, string][] = [
+    ['📌 Chương trình', EVENT_TYPES.find((t) => t.id === data.eventType)?.label ?? ''],
+    ['📅 Ngày', [formatDate(data.date), data.time].filter(Boolean).join(' – ')],
+    ['📍 Địa điểm', data.location.trim()],
+    ['👥 Số khách', data.guests],
+    ['👤 Họ tên', data.name.trim()],
+    ['📞 SĐT', data.phone.trim()],
+    ['💬 Lời nhắn', data.message.trim()],
+  ];
+  return [
+    `Chào ${profile.brand.name}, tôi muốn đặt lịch MC cho chương trình:`,
+    ...lines.filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`),
+    '(Gửi từ website)',
+  ]
+    .join('\n')
+    .replace(/ /g, ' '); // bỏ dấu cách không ngắt (từ typeset) để tin nhắn là chữ thuần
 }
 
-export async function submitBooking(data: BookingData): Promise<void> {
-  // Honeypot: bot điền trường ẩn → giả vờ thành công, không gửi.
-  if (data.website) return;
-
-  const payload = buildPayload(data);
-
-  if (!ENDPOINT) {
-    if (import.meta.env.DEV) {
-      console.info('[booking] Chưa cấu hình VITE_BOOKING_ENDPOINT – giả lập gửi:', payload);
-      await new Promise((r) => setTimeout(r, 900));
-      return;
-    }
-    throw new BookingError('Form chưa được kết nối. Vui lòng liên hệ trực tiếp qua Zalo hoặc điện thoại.');
-  }
-
+/** Sao chép chữ vào bộ nhớ tạm. Gọi ngay trong lượt bấm để trình duyệt (nhất là Safari) cho phép. */
+export async function copyText(text: string): Promise<boolean> {
   try {
-    if (ENDPOINT.includes('script.google.com')) {
-      await fetch(ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload),
-      });
-      return;
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
     }
-
-    const res = await fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) throw new BookingError(`Máy chủ phản hồi lỗi (${res.status}).`);
-  } catch (err) {
-    if (err instanceof BookingError) throw err;
-    throw new BookingError('Không gửi được do lỗi kết nối. Vui lòng thử lại hoặc nhắn Zalo.');
+  } catch {
+    // thử cách dự phòng bên dưới
+  }
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return ok;
+  } catch {
+    return false;
   }
 }

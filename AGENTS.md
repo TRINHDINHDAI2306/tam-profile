@@ -4,7 +4,7 @@ Dành cho mọi AI agent (Gemini/Antigravity, Claude…) làm việc trong repo 
 
 ## Bối cảnh
 - Trang one-page giới thiệu MC Anh Tâm, **ưu tiên điện thoại**, tông **hồng sang – nhẹ nhàng – chuyên nghiệp**.
-- Nguồn nội dung: `docs/source/PHẦN II.docx` (giữ nguyên văn, không tự thêm số liệu/thành tích). Ảnh gốc: `raw-images/` → bản nén WebP trong `public/images/`.
+- Nguồn nội dung: `docs/source/at.docx` – bản mới nhất, thay cho `PHẦN II.docx` (giữ nguyên văn, không tự thêm số liệu/thành tích). Ảnh gốc: `raw-images/` → bản nén WebP trong `public/images/`.
 - Không đặt file nguồn (docx, ảnh gốc, ảnh chụp màn hình) trong `public/` – mọi file ở đó đều bị đăng lên mạng.
 - Tài liệu: `docs/01-SPEC.md` (yêu cầu), `docs/02-PLAN.md` (kế hoạch), `docs/03-REVIEW.md` (kỹ thuật),
   `docs/04-IMAGE-CHECKLIST.md` (ảnh), `docs/05-GEMINI-TASKS.md` (các task), `docs/06-BOOKING-FORM.md` (form đặt lịch).

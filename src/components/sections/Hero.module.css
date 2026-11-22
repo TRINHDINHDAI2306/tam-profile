@@ -121,20 +121,46 @@
   font-size: var(--fs-sm);
 }
 
-.quote {
-  margin: 20px auto 0;
-  max-width: 420px;
-  padding: 0 8px;
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--c-plum);
-}
-
 .actions {
   display: grid;
   gap: 12px;
   margin-top: 28px;
+}
+
+/* Nút "Xem video" (chỉ hiện khi video nổi bật đã có nguồn) */
+.reel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--c-rose-deep);
+}
+
+.reelIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--c-gold);
+  background: rgba(255, 255, 255, 0.6);
+  transition: transform 0.25s var(--ease);
+}
+
+.reelIcon svg {
+  width: 14px;
+  height: 14px;
+  margin-left: 2px;
+}
+
+.reel:hover .reelIcon {
+  transform: scale(1.08);
 }
 
 @media (min-width: 640px) {
@@ -169,15 +195,9 @@
     justify-content: flex-start;
   }
 
-  .tagline,
-  .quote {
+  .tagline {
     margin-left: 0;
     padding: 0;
-  }
-
-  .quote {
-    padding-left: 20px;
-    border-left: 2px solid var(--c-gold);
   }
 
   .actions {

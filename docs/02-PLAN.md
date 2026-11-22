@@ -33,8 +33,8 @@ Cột **Người làm**: `Claude` = đã/đang làm trong phiên này · `Gemini
 |---|---|---|---|
 | 3.1 | Chốt kênh & điền SĐT, Zalo, email thật vào `contact` trong `src/data/profile.ts` | Bạn | ⏳ |
 | 3.2 | Form đặt lịch 2 bước + kiểm tra dữ liệu + trạng thái gửi | Claude | ✅ |
-| 3.3 | Code gửi form qua Formspree / Google Sheets | Claude | ✅ |
-| 3.4 | Tạo endpoint thật & điền `VITE_BOOKING_ENDPOINT` (task G6) | Bạn / Gemini | ⏳ |
+| 3.3 | Gửi đặt lịch qua Zalo (sao chép tin nhắn soạn sẵn + mở chat) | Claude | ✅ |
+| 3.4 | ~~Endpoint nhận form~~ – không cần nữa (đã chuyển sang Zalo) | – | – |
 | 3.5 | Thanh CTA đáy mobile: Gọi · Zalo · Đặt lịch (tự ẩn khi ở form) | Claude | ✅ |
 | 3.6 | Nút "Lưu danh bạ" (vCard `.vcf`) + mã QR (task G7) | Gemini | ⏳ |
 
