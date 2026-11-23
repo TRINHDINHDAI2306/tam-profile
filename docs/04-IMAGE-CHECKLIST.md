@@ -6,9 +6,8 @@
 |---|---|---|
 | `hero/vest-den-hoi-nghi.webp` | Vest đen, cầm micro trên sân khấu hội nghị | Bìa (hero), Hình ảnh sự kiện |
 | `story/chan-dung-hau-truong.webp` | Chân dung bên bàn kịch bản | Lời ngỏ, Hình ảnh sự kiện |
-| `about/dan-le-tot-nghiep.webp` | Dẫn Lễ tốt nghiệp – Học viện MC Văn Minh | Giới thiệu, Hình ảnh sự kiện |
 | `events/le-tong-ket-phung-hieu-2026.webp` | Lễ tổng kết năm 2026 – Cty Sách & Giáo dục Phụng Hiếu | Kinh nghiệm: Hội nghị |
-| `events/le-tot-nghiep-hv-mc-van-minh.webp` | Lễ tốt nghiệp Wedding K81 – Event K76 | Kinh nghiệm: Giáo dục |
+| `events/le-tot-nghiep-hv-mc-van-minh.webp` | Lễ tốt nghiệp Wedding K81 – Event K76 (ảnh chụp thật, cầm micro – không dùng bản ghép nền) | Hình ảnh sự kiện |
 | `events/gala-dinner-hv-mc-van-minh.webp` | Gala Dinner – Học viện MC Văn Minh | Kinh nghiệm: Gala |
 | `events/ngay-hoi-dai-doan-ket.webp` | Áo dài hồng – Ngày hội Đại đoàn kết toàn dân tộc | Kinh nghiệm: Cộng đồng |
 

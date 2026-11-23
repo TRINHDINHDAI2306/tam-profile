@@ -50,8 +50,8 @@ const img = {
   },
   graduation: {
     src: '/images/events/le-tot-nghiep-hv-mc-van-minh.webp',
-    alt: 'MC Anh Tâm trong chiếc váy trắng ngà dẫn Lễ tốt nghiệp Wedding K81 – Event K76 của Học viện MC Văn Minh',
-    position: '47% center',
+    alt: 'MC Anh Tâm trong chiếc váy trắng ngà cầm micro dẫn Lễ tốt nghiệp Wedding K81 – Event K76 của Học viện MC Văn Minh',
+    position: '62% center',
   },
   opening: {
     src: '/images/events/le-khai-truong-anh-thao-group.webp',
@@ -302,11 +302,7 @@ const content: Profile = {
       category: 'Cộng đồng',
       image: img.launch,
     },
-    {
-      caption: 'Lễ tốt nghiệp Wedding K81 – Event K76, Học viện MC Văn Minh',
-      category: 'Giáo dục',
-      image: img.graduation,
-    },
+    { caption: 'Đêm hội Trăng rằm – xã Quảng Bị', category: 'Cộng đồng', image: img.midAutumn },
     { caption: 'Gala Dinner – Học viện MC Văn Minh', category: 'Gala Dinner', image: img.gala },
     {
       caption: 'Tọa đàm "Phụ nữ Việt Nam – Khát vọng và hành trình tỏa sáng"',
@@ -314,7 +310,11 @@ const content: Profile = {
       image: img.talkshow,
     },
     { caption: 'Lễ khai trương "Kết nối thịnh vượng – Vững bước tương lai"', category: 'Khai trương', image: img.openingTrade },
-    { caption: 'Đêm hội Trăng rằm – xã Quảng Bị', category: 'Cộng đồng', image: img.midAutumn },
+    {
+      caption: 'Lễ tốt nghiệp Wedding K81 – Event K76, Học viện MC Văn Minh',
+      category: 'Giáo dục',
+      image: img.graduation,
+    },
     { caption: 'Lễ phát động Cuộc thi Đại sứ Văn hóa đọc năm 2026', category: 'Giáo dục', image: img.readingAmbassador },
     { caption: 'Quảng bá cây cảnh nghệ thuật Quảng Bị', category: 'Quảng bá', image: img.bonsaiPortrait },
   ],

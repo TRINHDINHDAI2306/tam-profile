@@ -21,7 +21,8 @@ Mọi chữ, ảnh, số điện thoại, Zalo… nằm trong **một file**: `s
 - Danh sách ảnh cần chụp: `docs/04-IMAGE-CHECKLIST.md`.
 - Video: khai báo trong `videos` của `src/data/profile.ts`. Hai cách:
   - **File MP4**: video gốc để trong `raw-videos/` (không đưa lên git/web), nén bằng ffmpeg sang
-    `public/videos/*.mp4` (H.264 720p, `-movflags +faststart`), ảnh bìa WebP trong `public/images/videos/`,
+    `public/videos/*.mp4` (H.264 1080p: `-preset slow -crf 20 -maxrate 4500k -bufsize 9000k -movflags +faststart`,
+    giữ mỗi file < 90MB vì GitHub giới hạn 100MB/file), ảnh bìa WebP trong `public/images/videos/`,
     rồi điền `src` + `poster`. Video iPhone HDR (HLG) nên chuyển SDR trước bằng `avconvert` để màu không bị bạc.
   - **YouTube**: dán link vào `youtube`.
   `featured` phát ngay tại chỗ (nên là video ngang); video quay dọc đặt `orientation: 'portrait'`.
